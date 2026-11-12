@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário Nacional - Política, Economia e Bastidores de Brasília</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1f2937;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+        }
+
+        /* Barra Superior de Data e Edição */
+        .top-bar {
+            background-color: #f3f4f6;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.78rem;
+            color: #4b5563;
+            padding: 6px 0;
+        }
+
+        .top-bar-content {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Cabeçalho Principal do Jornal */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #d1d5db;
+            padding: 22px 0;
+            text-align: center;
+        }
+
+        .brand-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 2.7rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        header .tagline {
+            font-size: 0.82rem;
+            color: #6b7280;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* Menu de Navegação Editorial */
+        nav {
+            background-color: #0f172a;
+            border-bottom: 3px solid #b91c1c;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-content {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #f9fafb;
+            text-decoration: none;
+            padding: 12px 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: background-color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: #b91c1c;
+        }
+
+        /* Estrutura Principal */
+        .container {
+            max-width: 1140px;
+            margin: 35px auto;
+            display: flex;
+            gap: 45px;
+            padding: 0 20px;
+        }
+
+        main {
+            flex: 2.2;
+        }
+
+        aside {
+            flex: 1;
+            border-left: 1px solid #e5e7eb;
+            padding-left: 35px;
+            height: fit-content;
+        }
+
+        /* Cabeçalho da Matéria */
+        .breadcrumb {
+            font-size: 0.8rem;
+            color: #b91c1c;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h2.article-title {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 2.45rem;
+            line-height: 1.18;
+            color: #111827;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        p.article-subtitle {
+            font-size: 1.18rem;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 22px;
+            font-weight: 400;
+        }
+
+        /* Metadados e Compartilhamento */
+        .article-meta {
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 14px 0;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .author-info {
+            font-size: 0.85rem;
+            color: #374151;
+        }
+
+        .author-info strong {
+            color: #111827;
+        }
+
+        .publish-date {
+            display: block;
+            font-size: 0.78rem;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .share-btn {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            color: #374151;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .share-btn:hover {
+            background-color: #e5e7eb;
+        }
+
+        /* Imagem Principal */
+        figure.main-figure {
+            margin-bottom: 30px;
+        }
+
+        figure.main-figure img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 3px;
+        }
+
+        figure.main-figure figcaption {
+            font-size: 0.82rem;
+            color: #6b7280;
+            padding-top: 8px;
+            border-bottom: 1px solid #f3f4f6;
+            padding-bottom: 10px;
+        }
+
+        /* Corpo do Texto */
+        .article-content p {
+            font-size: 1.08rem;
+            color: #1f2937;
+            margin-bottom: 22px;
+            line-height: 1.75;
+        }
+
+        .article-content h3 {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 1.45rem;
+            color: #111827;
+            margin: 34px 0 14px 0;
+        }
+
+        .pull-quote {
+            border-left: 4px solid #b91c1c;
+            background-color: #f9fafb;
+            padding: 20px 24px;
+            margin: 30px 0;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #1f2937;
+        }
+
+        .pull-quote cite {
+            display: block;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-style: normal;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* Barra Lateral (Mais Lidas) */
+        .sidebar-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #0f172a;
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        .trending-list {
+            list-style: none;
+        }
+
+        .trending-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .trending-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .trending-number {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #b91c1c;
+            line-height: 1;
+        }
+
+        .trending-info a {
+            text-decoration: none;
+            color: #111827;
+            font-weight: 600;
+            font-size: 0.95rem;
+            line-height: 1.35;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .trending-info a:hover {
+            color: #b91c1c;
+        }
+
+        .trending-tag {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #0f172a;
+            color: #9ca3af;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            max-width: 1140px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-brand {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        /* Responsividade */
+        @media (max-width: 850px) {
+            .container {
+                flex-direction: column;
+            }
+            aside {
+                border-left: none;
+                border-top: 2px solid #e5e7eb;
+                padding-left: 0;
+                padding-top: 30px;
+            }
+            h2.article-title {
+                font-size: 1.9rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <span>Brasília, Quinta-feira, 12 de Novembro de 2026</span>
+            <span>Edição Digital • Jornalismo Independente</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="brand-container">
+            <h1>Diário Nacional</h1>
+            <div class="tagline">Política • Economia • Brasil • Mundo</div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="active">Política</a>
+            <a href="#">Economia</a>
+            <a href="#">Congresso</a>
+            <a href="#">Judiciário</a>
+            <a href="#">Estados</a>
+            <a href="#">Internacional</a>
+            <a href="#">Opinião</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <main>
+            <span class="breadcrumb">Política &bull; Bastidores de Brasília</span>
+            <h2 class="article-title">NOVA LEI. Lula e congresso aprovam nova lei, tornando obrigatorio todo cidadão brasileiro á fazer o L com as mãos</h2>
+            <p class="article-subtitle">A nova lei foi proposta e aprovada no congresso. A mesma visa tornar obrigatorio o gesto com as mãos. Formando um L, todos os dias no horario 13:13 de Brásilia</p>
+
+            <div class="article-meta">
+                <div class="author-info">
+                    Por <strong>Mariana Vasconcelos e Carlos Eduardo Lima</strong>, de Brasília
+                    <span class="publish-date">12/11/2026 11h42 &bull; Atualizado há 25 minutos</span>
+                </div>
+                <div class="share-buttons">
+                    <a href="#" class="share-btn">Compartilhar</a>
+                    <a href="#" class="share-btn">Copiar Link</a>
+                </div>
+            </div>
+
+            <figure class="main-figure">
+                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1100&q=80" alt="Prédio do Congresso Nacional em Brasília">
+                <figcaption>Vista externa do Congresso Nacional, em Brasília, onde líderes partidários se reúnem para definir a pauta da semana. (Foto: Unsplash/Divulgação)</figcaption>
+            </figure>
+
+            <div class="article-content">
+                <p><strong>BRASÍLIA —</strong> Devido a grande manifestação do povo brasileiro, contra manifetações politicas, e ate mesmo perseguições. Resultando em demissão, agressão e até morte de apoiadores do partido dos trabalhadores (PT) a nova lei foi instituida.</p>
+
+                <p>Ela da ênfase em tornar obrigatorio o gesto "L" com as mãos, todos os dias, as 13:13 horas, no horario de brasilia. Será aplicada a partir do dia 01/01/2027 e tornará obrigatorio a todas as pessoas acima de 14 anos.</p>
+
+                <div class="pull-quote">
+                    "É inadimissivel uma perseguição politica desse nivel, ondel eleitores do PT estao sendo demitidos, agredidos e ate mortos, só pela sua posição politica. Por isso essa lei vai tornar obrigatorio e quem não cumpri estara sujeito a multas de ate R$400,00 caso comprovação"
+                    <cite>— Presidente Lula</cite>
+                </div>
+
+                <h3>Quais a penas caso não seja cumprida a lei</h3>
+                <p>Os ministros que aprovaram junto ao partido, deixaram claro que essa lei é temporaria, apenas por no máximo 1 ano. Como forma de protesto e manifestação contra a perseguição politica para apoiadores do PT.</p>
+
+                <p>Eles tomaram essa inicitiva de tornar obrigatorio o gesto, nesse horio. Intitulado o "Horário do papai Lula" pelos eleitores, como forma de acabar com a perseguição, fazendo com que todos os cidadões brasileiros, com mais de 14 anos de idade, devem fazer este gesto no devido horario</p>
+
+                <p>As penas caso nao haja o cumprimento da lei, são de multas de ate R$400,00. Caso haja denuncia, ou a polica local presencie o cidadão no horario defino sem fazer o gesto. Caso a mesma pessoa, comprovademente nao faaça o gesto mais de 3 vezes, esta sujeita a condenação de até 4 anos de prisão, por perseguição politica.</p>
+            </div>
+        </main>
+
+        <aside>
+            <div class="sidebar-title">Mais Lidas em Política</div>
+            <ul class="trending-list">
+                <li class="trending-item">
+                    <span class="trending-number">1</span>
+                    <div class="trending-info">
+                        <a href="#">Comissão do Senado aprova calendário de sabatinas para agências reguladoras</a>
+                        <span class="trending-tag">Congresso</span>
+                    </div>
+                </li>
+                <li class="trending-item">
+                    <span class="trending-number">2</span>
+                    <div class="trending-info">
+                        <a href="#">Ministério do Planejamento divulga relatório bimestral de receitas e despesas</a>
+                        <span class="trending-tag">Contas Públicas</span>
+                    </div>
+                </li>
+                <li class="trending-item">
+                    <span class="trending-number">3</span>
+                    <div class="trending-info">
+                        <a href="#">Governadores se reúnem na capital federal para discutir regulamentação tributária</a>
+                        <span class="trending-tag">Estados</span>
+                    </div>
+                </li>
+                <li class="trending-item">
+                    <span class="trending-number">4</span>
+                    <div class="trending-info">
+                        <a href="#">STF retoma julgamento sobre critérios de transparência em emendas parlamentares</a>
+                        <span class="trending-tag">Judiciário</span>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">Diário Nacional</div>
+            <div>&copy; 2026 Diário Nacional Comunicação S.A. Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+</body>
+</html>
